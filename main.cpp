@@ -1,5 +1,23 @@
 #include <iostream>
 
+int ** convert( const int * t, size_t n, const size_t * lns, size_t rows){
+  int ** result = new int*[rows]
+  const int* current =t;
+
+  for ( size_t i=0; i < rows; ++i)
+  {
+    size_t len = lns[i];
+    result[i]= new int[len];
+
+    for( size_t j=0; j<len; ++j)
+    {
+      result[i][j]= *current;
+      current++;
+    }
+  }
+  return result;
+}
+
 void destroy(int ** mtx, size_t created )
 {
   for(size_t i=0; i< created;i++)
